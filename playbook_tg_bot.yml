@@ -1,0 +1,17 @@
+- hosts: master
+  become: yes
+  become_method: sudo
+  roles:
+    - db
+
+- hosts: slave
+  become: yes
+  become_method: sudo
+  roles:
+    - db_repl
+
+- hosts: master
+  become: yes
+  become_method: sudo
+  roles:
+    - bot
