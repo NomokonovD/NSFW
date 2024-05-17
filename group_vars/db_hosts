@@ -1,0 +1,5 @@
+user_replication: repl_user
+password_replication: qwerty
+ansible_repl_host: 192.168.0.62
+ansible_master_host: 192.168.0.61
+PORT: 5432

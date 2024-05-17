@@ -1,0 +1,36 @@
+
+- name: Install Python and system dependencies
+  apt: "name={{ item }} state=present"
+  with_items:
+    - python3-full
+    - virtualenv
+    - python3-psycopg2
+    - git
+    
+- name: Install dependencies
+  apt:
+    name: 
+      - python3
+      - python3-pip
+    state: present
+
+- name: Clone the NSFW repository
+  git:
+    repo: https://github.com/NomokonovD/NSFW.git
+    dest: /home/user/bot/
+    version: bot
+
+- name: Installing dependencies from requirements.txt
+  pip:
+    requirements: /home/user/bot/requirements.txt
+    virtualenv: /home/user/venv
+
+- name: Copy .env file
+  copy:
+    src: ./.env
+    dest: /home/user/bot/
+
+- name: Start TelegramBot NSFW
+  shell:
+    chdir: /home/user/bot
+    cmd: "../venv/bin/python PT_Start.py"

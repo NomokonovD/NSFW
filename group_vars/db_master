@@ -1,0 +1,8 @@
+ansible_host: "{{ ansible_master_host }}"
+ansible_user: devops
+ansible_password: kali
+ansible_become_pass: kali
+
+DB_NAME: "ptstart_bot"
+USER_NAME: "postgres"
+PASSWORD_USER: "Qq12345"

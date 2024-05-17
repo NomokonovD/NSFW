@@ -1,9 +1,9 @@
 [db_hosts]
-master
-slave
+bot
+repl
 
 [db_master]
-master
+bot
 
 [db_slave]
-slave
+repl
