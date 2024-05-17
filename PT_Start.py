@@ -83,6 +83,10 @@ def get_ps(update: Update, context):
     data = execute_ssh_command('ps aux --sort=-%cpu')
     update.message.reply_text(data)
 
+def get_services(update: Update, context):
+    data = execute_ssh_command('systemctl list-units --type=service --state=running | head -n 15')
+    update.message.reply_text(data)
+
 def get_ss(update: Update, context):
     data = execute_ssh_command('ss -tuln')
     update.message.reply_text(data)
@@ -449,6 +453,7 @@ def main():
     dp.add_handler(CommandHandler("get_critical", get_critical))
     dp.add_handler(CommandHandler("get_ps", get_ps))
     dp.add_handler(CommandHandler("get_ss", get_ss))
+    dp.add_handler(CommandHandler("get_services", get_services))
     dp.add_handler(CommandHandler("club_rules", club_rules))
     dp.add_handler(CommandHandler("get_repl_logs", get_repl_logs))
     dp.add_handler(CommandHandler("get_emails", get_emails))
